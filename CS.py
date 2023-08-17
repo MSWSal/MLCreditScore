@@ -8,3 +8,5 @@ pio.templates.default = "plotly_white"
 data = pd.read_csv("train.csv")
 
 # print(data.head())
+# print(data.info())
+
