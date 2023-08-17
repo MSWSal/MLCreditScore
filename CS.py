@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 
 pio.templates.default = "plotly_white"
 
@@ -42,13 +43,18 @@ data["Credit_Mix"] = data["Credit_Mix"].map({"Standard":1,
                                              "Bad":0})
 
 x = np.array(data[["Annual_Income", "Monthly_Inhand_Salary","Num_Bank_Accounts",
-                   "Num_Credit_Card","Inr=terest_Rate","Num_of_Loan",
+                   "Num_Credit_Card","Interest_Rate","Num_of_Loan",
                    "Delay_from_due_date","Num_of_Loan",
                    "Delay_from_due_date","Num_of_Delayed_Payment",
                    "Credit_Mix","Outstanding_Debt",
                    "Credit_History_Age","Monthly_Balance"]])
 
 y = np.array(data[["Credit_Score"]])
+
+xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.33, random_state=42)
+
+model = RandomForestClassifier()
+model.fit(xtrain,ytrain)
 
 
 
