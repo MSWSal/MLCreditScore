@@ -14,4 +14,14 @@ data = pd.read_csv("train.csv")
 # print(data["Credit_Score"].value_counts())
 
 
+figure = px.box(data,
+x="Occupation",
+color="Credit_Score",
+title="CS based on Occ",
+color_discrete_map={'Poor':'red',
+                    'Standard': 'yellow',
+                    'Good':'green'})
+
+figure.show()
+
 
