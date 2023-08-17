@@ -11,4 +11,7 @@ data = pd.read_csv("train.csv")
 # print(data.info())
 # print(data.isnull().sum())
 
+# print(data["Credit_Score"].value_counts())
+
+
 
